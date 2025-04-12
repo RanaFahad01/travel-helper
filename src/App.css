@@ -63,3 +63,29 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Packing list */
+div.packing-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+div.list-item {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  align-items: flex-start;
+  border: 2px solid blue;
+}
+div.list-item * {
+  border: 2px solid blue;
+}
+
+.list-item-amount {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.packed-button {
+}

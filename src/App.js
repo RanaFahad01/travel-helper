@@ -86,7 +86,7 @@ function PackingList({ packingListItems }) {
     },
     {
       description: "Shawarmas",
-      amount: 10,
+      amount: 99,
       isComplete: false,
     },
   ];
@@ -96,21 +96,42 @@ function PackingList({ packingListItems }) {
   return (
     <div className="packing-list">
       {packingListItems.map((listItem, index) => (
-        <div className="list-item" key={index}>
-          <p className="list-item-amount">{listItem.amount}</p>
-          <div className="desc-button">
-            <p className="item-desc">{listItem.description}</p>
-            <button
-              className="packed-button"
-              onClick={() => packedHandle(index)}
-            >
-              {!listItem.isComplete
-                ? "PACKED"
-                : "HOW DARE YOU HACK THIS WEBAPP"}
-            </button>
-          </div>
-        </div>
+        // <div className="list-item" key={index}>
+        //   <p className="list-item-amount">{listItem.amount}</p>
+        //   <div className="desc-button">
+        //     <p className="item-desc">{listItem.description}</p>
+        //     <button
+        //       className="packed-button"
+        //       onClick={() => packedHandle(index)}
+        //     >
+        //       {!listItem.isComplete
+        //         ? "PACKED"
+        //         : "HOW DARE YOU HACK THIS WEBAPP"}
+        //     </button>
+        //   </div>
+        // </div>
+        <PackingListItem
+          packingListItem={listItem}
+          index={index}
+          packedHandle={packedHandle}
+        ></PackingListItem>
       ))}
+    </div>
+  );
+}
+
+function PackingListItem({ packingListItem, index, packedHandle }) {
+  return (
+    <div className="list-item" key={index}>
+      <p className="list-item-amount">{packingListItem.amount}</p>
+      <div className="desc-button">
+        <p className="item-desc">{packingListItem.description}</p>
+        <button className="packed-button" onClick={() => packedHandle(index)}>
+          {!packingListItem.isComplete
+            ? "PACKED"
+            : "HOW DARE YOU HACK THIS WEBAPP"}
+        </button>
+      </div>
     </div>
   );
 }
